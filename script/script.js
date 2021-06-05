@@ -16,6 +16,11 @@ function gerarForma() {
     ctx.moveTo(x, y)
     ctx.strokeStyle = cores[corStroke]
     ctx.fillStyle = cores[corFill]
+    ctx.lineWidth = aleatorio(8)
+
+    var forma = new construirForma(x, y, numLinhas, ctx.lineWidth, ctx.strokeStyle, ctx.fillStyle)
+
+    console.log(forma)
 
     for (let i = 0; i < numLinhas; i++) {
         novaLinha()
@@ -24,6 +29,17 @@ function gerarForma() {
     ctx.closePath()
     ctx.fill()
     ctx.stroke()
+    
+}
+
+function construirForma(x, y, numLinhas, lineWidth, strokeStyle, fillStyle) {
+    this.xInicio = x,
+    this.yInicio = y,
+    this.numLinhas = numLinhas,
+    this.lineWidth = lineWidth,
+    this.strokeStyle = strokeStyle,
+    this.fillStyle = fillStyle,
+    this.vLinhas = novaLinha()
 }
 
 function aleatorio(valor) {
@@ -35,6 +51,7 @@ function novaLinha() {
     x = aleatorio(500)
     y = aleatorio(500)
     ctx.lineTo(x, y)
+    return [x, y]
 }
 
 function clear() {
