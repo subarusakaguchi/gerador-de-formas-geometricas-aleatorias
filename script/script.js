@@ -53,6 +53,22 @@ function gerarForma() {
     escreverJS(forma)
 }
 
+function alterarCor(input) {
+    let inputValue = input.value
+    let corBorda = document.getElementById(input.id)
+    let cor = inputValue.trim().toLowerCase()
+    if (verificarCor(cor)) {
+        corBorda.style.backgroundColor = `${cor}`
+    } else {
+        corBorda.style.backgroundColor = 'white'
+    }
+    if (cor == 'black') {
+        corBorda.style.color = 'white'
+    } else {
+        corBorda.style.color = 'black'
+    }
+}
+
 function verificarCor(cor) {
     if (CSS_COLOR_NAMES.includes(cor) || (cor.startsWith('#') && (cor.length === 7 || cor.length === 4))){
         return true
