@@ -16,9 +16,15 @@
         <section>
             <div class="container">
                 <canvas id="canvas" width="500px" height="500px"></canvas>
+                <p>Escolha o número de linhas: </p><input type="number" name="nLinhas" id="nLinhas" min="0">
+                <p>Escolha a grossura da borda da forma: </p><input type="number" name="wBorda" id="wBorda">
+                <p>Escolha a cor da borda: </p><input type="text" name="corBorda" id="corBorda">
+                <p>Escolha a cor de preenchimento: </p><input type="text" name="corPreenchimento" id="corPreenchimento">
+                <p>Para outros tamanhos de canvas: </p><input type="number" name="xInput" id="xInput"><input type="number" name="yInput" id="yInput">
                 <input type="button" value="Gerar Forma" onclick="gerarForma()" class="btn">
                 <div id="res">
-                    <textarea name="codigo" id="codigo" cols="30" rows="10"></textarea>
+                    <textarea name="codigo" id="codigo" cols="30" rows="10" readonly></textarea>
+                    <input type="button" value="Copiar" class="btn" onclick="copiar()">
                 </div>
             </div>
         </section>
