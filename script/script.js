@@ -3,14 +3,13 @@ let ctx = canvas.getContext('2d')
 
 let x = aleatorio(500)
 let y = aleatorio(500)
+let numLinhas = aleatorio(11) + 2
 
 function gerarForma() {
     clear()
     let cores = ['white', 'orange', 'pink', 'red', 'blue', 'cyan', 'purple', 'green', 'yellow']
     let corStroke = aleatorio(cores.length)
     let corFill = aleatorio(cores.length)
-
-    let numLinhas = aleatorio(11) + 2
 
     ctx.beginPath()
     ctx.moveTo(x, y)
@@ -20,16 +19,13 @@ function gerarForma() {
 
     var forma = new construirForma(x, y, numLinhas, ctx.lineWidth, ctx.strokeStyle, ctx.fillStyle)
 
-    console.log(forma)
-
-    for (let i = 0; i < numLinhas; i++) {
-        novaLinha()
-    }
+    console.log(forma.vLinhas)
 
     ctx.closePath()
     ctx.fill()
     ctx.stroke()
-    
+
+    escreverJS(forma)
 }
 
 function construirForma(x, y, numLinhas, lineWidth, strokeStyle, fillStyle) {
@@ -39,7 +35,7 @@ function construirForma(x, y, numLinhas, lineWidth, strokeStyle, fillStyle) {
     this.lineWidth = lineWidth,
     this.strokeStyle = strokeStyle,
     this.fillStyle = fillStyle,
-    this.vLinhas = novaLinha()
+    this.vLinhas = desenharLinhas()
 }
 
 function aleatorio(valor) {
@@ -47,11 +43,30 @@ function aleatorio(valor) {
     return res
 }
 
-function novaLinha() {
-    x = aleatorio(500)
-    y = aleatorio(500)
-    ctx.lineTo(x, y)
-    return [x, y]
+function desenharLinhas() {
+    let vLinhas = []
+    for (let i = 0; i < numLinhas; i++) {
+        x = aleatorio(500)
+        y = aleatorio(500)
+        ctx.lineTo(x, y)
+        vLinhas.push([x, y])
+    }
+    return vLinhas
+}
+
+function escreverJS(f) {
+    let textarea = document.getElementById('codigo')
+    textarea.innerHTML = `let canvas = document.getElementById('canvas');\n
+let ctx = canvas.getContext('2d');\n
+ctx.beginPath();\n
+ctx.moveTo(${f.xInicio}, ${f.yInicio});\n
+ctx.strokeStyle = '${f.strokeStyle}';\n
+ctx.fillStyle = '${f.fillStyle}';\n
+ctx.lineWidth = ${f.lineWidth};\n`
+    for (let i = 0; i < f.numLinhas; i++) {
+        textarea.innerHTML += `ctx.lineTo(${f.vLinhas[i][0]}, ${f.vLinhas[i][1]});\n`
+    }
+    textarea.innerHTML += 'ctx.closePath();\nctx.fill();\nctx.stroke();'
 }
 
 function clear() {
