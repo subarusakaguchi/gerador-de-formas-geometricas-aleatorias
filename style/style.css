@@ -86,7 +86,17 @@ input::-webkit-inner-spin-button {
 }
 
 footer {
+    font-weight: bold;
     padding: 20px 0 20px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: purple;
+}
+
+footer a:hover {
+    color: violet;
 }
 
 @media only screen and (max-width: 1200px) {
