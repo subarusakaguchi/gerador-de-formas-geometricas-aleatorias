@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+h2 {
+    margin-top: 10px;
+}
+
 body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -30,6 +34,7 @@ header {
     margin-bottom: 10px;
     width: 300px;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 input::-webkit-outer-spin-button,
@@ -45,6 +50,14 @@ input::-webkit-inner-spin-button {
 
 #inputs {
     margin-left: 20px;
+}
+
+#inputs p {
+    margin-bottom: 10px;
+}
+
+.aviso {
+    color: yellow;
 }
 
 .btn {
@@ -64,9 +77,9 @@ input::-webkit-inner-spin-button {
 
 #codigo {
     margin: 10px;
-    max-width: 400px;
+    max-width: 500px;
     max-height: 200px;
-    min-width: 400px;
+    min-width: 500px;
     min-height: 200px;
     font: bold 12pt courier;
     padding: 10px;
@@ -76,3 +89,24 @@ footer {
     padding: 20px 0 20px 0;
 }
 
+@media only screen and (max-width: 1200px) {
+    .container {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #canvas {
+        width: 380px;
+    }
+
+    .container {
+        width: 100%;
+        display: block;
+    }
+
+    #codigo {
+        max-width: 400px;
+        min-width: 400px;
+    }
+}

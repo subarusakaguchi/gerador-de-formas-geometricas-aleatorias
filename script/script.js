@@ -10,10 +10,14 @@ var numLinhas
 
 function copiar() {
     let code = document.getElementById('codigo')
-    code.select()
-    code.setSelectionRange(0, 99999)
-    document.execCommand("copy")
-    alert(`O seguinte texto foi copiado para a sua área de transferência: "${code.value}"`)
+    if (code.value == '') {
+        alert('Nenhuma forma gerada! Por favor crie uma!')
+    } else {
+        code.select()
+        code.setSelectionRange(0, 99999)
+        document.execCommand("copy")
+        alert(`O seguinte texto foi copiado para a sua área de transferência: "${code.value}"`)
+    }
 }
 
 function gerarForma() {
@@ -113,7 +117,7 @@ function escreverJS(f) {
     }
     let xTaxa = xInput / 500
     let yTaxa = yInput / 500
-    textarea.innerHTML = `let canvas = document.getElementById('canvas');\nlet ctx = canvas.getContext('2d');\nctx.beginPath();\nctx.moveTo(${f.xInicio * xTaxa}, ${f.yInicio * yTaxa});\nctx.strokeStyle = '${f.strokeStyle}';\nctx.fillStyle = '${f.fillStyle}';\nctx.lineWidth = ${f.lineWidth};\n`
+    textarea.innerHTML = `\u002f\u002fConsidere que o id do canvas é "canvas"\n\u002f\u002fCaso seu canvas tenha outra id, apenas\n\u002f\u002fsubstituir abaixo no getELementbyId()\n\nlet canvas = document.getElementById('canvas');\nlet ctx = canvas.getContext('2d');\nctx.beginPath();\nctx.moveTo(${f.xInicio * xTaxa}, ${f.yInicio * yTaxa});\nctx.strokeStyle = '${f.strokeStyle}';\nctx.fillStyle = '${f.fillStyle}';\nctx.lineWidth = ${f.lineWidth};\n`
     for (let i = 0; i < f.numLinhas; i++) {
         textarea.innerHTML += `ctx.lineTo(${f.vLinhas[i][0] * xTaxa}, ${f.vLinhas[i][1] * yTaxa});\n`
     }

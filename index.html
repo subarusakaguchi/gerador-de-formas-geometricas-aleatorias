@@ -19,16 +19,18 @@
                     <canvas id="canvas" width="500px" height="500px"></canvas>
                 </div>
                 <div id="inputs">
+                    <p class="aviso">OBS: É possível personalizar alguns dados, mas não é obrigatório!</p>
                     <p>Escolha o número de linhas: </p><input type="number" name="nLinhas" id="nLinhas" min="0">
                     <p>Escolha a grossura da borda da forma: </p><input type="number" name="wBorda" id="wBorda">
                     <p>Escolha a cor da borda: </p><input type="text" name="corBorda" id="corBorda" oninput="alterarCor(this)">
                     <p>Escolha a cor de preenchimento: </p><input type="text" name="corPreenchimento" id="corPreenchimento" oninput="alterarCor(this)">
-                    <p>Para outros tamanhos de canvas: </p><input type="number" name="xInput" id="xInput"><input type="number" name="yInput" id="yInput">
+                    <p>Para outros tamanhos de canvas: </p><p class="aviso">OBS: O canvas do HTML possui um tamanho pré estabelecido no mesmo, por isto caso queira reutilizar o código para o seu canvas, coloque abaixo os valores de Width e Height do seu Canvas (em px): </p><input type="number" name="xInput" id="xInput" placeholder="Width"><input type="number" name="yInput" id="yInput" placeholder="Height">
                     <input type="button" value="Gerar Forma" onclick="gerarForma()" class="btn">
                 </div>
             </div>
             <div id="res">
-                <textarea name="codigo" id="codigo" cols="30" rows="10" readonly></textarea>
+                <h2>Código:</h2>
+                <textarea name="codigo" id="codigo" cols="30" rows="10" readonly></textarea><br>
                 <input type="button" value="Copiar" class="btn" onclick="copiar()">
             </div>
         </section>
